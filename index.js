@@ -1,18 +1,27 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var port = process.env.PORT || 3000;
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+const express = require('express');
+const path = require('path');
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const port = 3000;
+
+// Setup static public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 io.on('connection', function(socket){
+  io.emit("a user connected");
+  socket.on('disconnect', function(){
+    io.emit("a user disconnected");
+  });
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    if(msg.nickname){
+      io.emit('chat message', msg);
+    }
   });
 });
 
-http.listen(port, function(){
+http.listen(port,require("./local_ip.json").ip, function(){
   console.log('listening on *:' + port);
 });
