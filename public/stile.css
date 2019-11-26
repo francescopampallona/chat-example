@@ -1,0 +1,28 @@
+
+
+#chat{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+#chatform { border: 1px solid black; position: fixed; bottom: 0; width: 100%;    }
+#chatform input {padding: .5%; width: 90%; }
+#chatform button {  background: rgb(130, 255, 255); padding: .5%; width: 8%; }
+#messages {list-style-type: none;  border: 1px solid black; height: 80%; overflow-y: scroll;}
+#messages li{position: relative;}
+
+#login{
+    height: 100%;
+    width: 100%;
+}
+#loginform{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    text-align: center;
+}
+#loginform input {
+    padding: 1%;
+} 
