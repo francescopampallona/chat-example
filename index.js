@@ -22,6 +22,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(port,require("./local_ip.json").ip, function(){
+http.listen(port,function(){
   console.log('listening on *:' + port);
 });
