@@ -4,7 +4,7 @@ const path = require('path');
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Setup static public folder
 app.use(express.static(path.join(__dirname, 'public')));
